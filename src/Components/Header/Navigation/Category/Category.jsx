@@ -3,17 +3,16 @@ import { useSelector } from 'react-redux';
 import cN from 'classnames';
 import style from './Category.module.scss';
 
-export const Category = ({ list }) => {
-  const gender = useSelector(state => state.navigation.activeGender);
-  const categoriesList = list.find(item => item.link === gender);
+export const Category = () => {
+  const { activeGender, categories } = useSelector(state => state.navigation);
 
   return (
     <ul className={style.category}>
-      {categoriesList.categories.map(item => (
-        <li key={item.link} className={style.item}>
+      {categories[activeGender]?.list?.map(item => (
+        <li key={item.slug} className={style.item}>
           <NavLink
             className={({ isActive }) => cN(style.link, isActive && style.linkActive)}
-            to={`${gender}/${item.link}`}
+            to={`${activeGender}/${item.slug}`}
           >
             {item.title}
           </NavLink>
