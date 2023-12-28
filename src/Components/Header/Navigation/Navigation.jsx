@@ -16,7 +16,7 @@ export const Navigation = () => {
   }, [gender, dispatch]);
 
   return (
-    <nav>
+    <nav >
       <Container>
         <Gender />
         <Category />
