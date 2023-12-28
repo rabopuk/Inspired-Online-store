@@ -6,7 +6,7 @@ import { Category } from './Category/Category.jsx'
 import { Gender } from './Gender/Gender.jsx'
 import { setActiveGender } from '../../../features/navigationSlice.js';
 
-export const Navigation = ({ list }) => {
+export const Navigation = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const gender = location.pathname.split('/')[1] || 'women';
@@ -18,8 +18,8 @@ export const Navigation = ({ list }) => {
   return (
     <nav>
       <Container>
-        <Gender list={list} />
-        <Category list={list} />
+        <Gender />
+        <Category />
       </Container>
     </nav>
   );

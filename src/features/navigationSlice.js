@@ -5,8 +5,7 @@ export const fetchNavigation = createAsyncThunk(
   "navigation/fetchNavigation",
   async () => {
     const response = await fetch(CATEGORIES_URL);
-    const data = await response.json();
-    return data;
+    return await response.json();
   }
 );
 
@@ -37,7 +36,7 @@ const navigationSlice = createSlice({
       .addCase(fetchNavigation.rejected, (state, action) => {
         state.status = 'fail';
         state.error = action.error.message;
-      })
+      });
   },
 });
 
