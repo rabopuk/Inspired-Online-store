@@ -14,7 +14,7 @@ export const Gender = () => {
             className={({ isActive }) =>
               cN(style.link, (isActive || gender === activeGender) && style.linkActive)
             }
-            to={gender}
+            to={`/catalog/${gender}`}
           >
             {categories[gender].title}
           </NavLink>
