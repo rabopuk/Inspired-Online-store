@@ -9,9 +9,9 @@ import { API_URL } from '../../const.js';
 import { ColorList } from '../ColorList/ColorList.jsx';
 import { ProductSize } from './ProductSize/ProductSize.jsx';
 import { Count } from '../Count/Count.jsx';
-import Like from '../../assets/heart.svg?react';
 import { Goods } from '../Goods/Goods.jsx';
 import { fetchCategory } from '../../features/goodsSlice.js';
+import { BtnLike } from '../btnLike/btnLike.jsx';
 
 export const ProductPage = () => {
   const dispatch = useDispatch();
@@ -102,7 +102,7 @@ export const ProductPage = () => {
                 aria-label='Добавить в избранное'
                 type='button'
               >
-                <Like />
+                <BtnLike />
               </button>
             </div>
           </form>
