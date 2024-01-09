@@ -6,12 +6,14 @@ import { MainPage } from './Components/MainPage/MainPage.jsx';
 import { ErrorPage } from './Components/ErrorPage/ErrorPage.jsx';
 import { fetchNavigation } from './features/navigationSlice.js';
 import { fetchColors } from './features/colorSlice.js';
+import { ProductPage } from './Components/ProductPage/ProductPage.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Root />}>
       <Route index element={<MainPage />} />
       <Route path='catalog/:gender/:category?' element={<MainPage />} />
+      <Route path='product/:id' element={<ProductPage />} />
       <Route path='*' element={<ErrorPage />} />
     </Route>
   )

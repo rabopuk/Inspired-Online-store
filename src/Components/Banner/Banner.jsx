@@ -8,7 +8,7 @@ import { API_URL } from '../../const.js';
 export const Banner = ({ data }) => {
   const isMobile = useMedia('(max-width: 540px)');
   const isTablet = useMedia('(max-width: 768px)');
-  const isLaptop = useMedia('(max-width: 540px)');
+  const isLaptop = useMedia('(max-width: 1024px)');
 
   const [bgURL, setBgURL] = useState('');
 
