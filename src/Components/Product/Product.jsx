@@ -17,9 +17,7 @@ export const Product = ({ id, pic, title, price, colors, description }) => (
 
     <div className={style.row}>
       <p className={style.price}>руб {price}</p>
-      <button className={style.favorite}>
-        <BtnLike />
-      </button>
+      <BtnLike id={id} />
     </div>
 
     <ColorList colors={colors} />
