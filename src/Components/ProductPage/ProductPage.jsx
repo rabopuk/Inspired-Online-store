@@ -6,6 +6,7 @@ import { fetchProduct } from '../../features/productSlice.js';
 import { Container } from '../Layout/Container/Container.jsx';
 import style from './ProductPage.module.scss';
 import { API_URL } from '../../const.js';
+import { addToCart } from '../../features/cartSlice.js';
 import { ColorList } from '../ColorList/ColorList.jsx';
 import { ProductSize } from './ProductSize/ProductSize.jsx';
 import { Count } from '../Count/Count.jsx';
@@ -17,22 +18,26 @@ export const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { product } = useSelector(state => state.product);
-  const { gender, category } = product;
+  const { gender, category, colors } = product;
+  const { colorList } = useSelector(state => state.color);
 
   const [selectedColor, setSelectedColor] = useState('');
+  const [selectedSize, setSelectedSize] = useState('');
+
   const handleColorChange = e => {
     setSelectedColor(e.target.value);
   };
 
-  const [selectedSize, setSelectedSize] = useState('');
   const handleSizeChange = e => {
     setSelectedSize(e.target.value);
   };
 
   const [count, setCount] = useState(1);
+
   const handleIncrement = () => {
     setCount(prevCount => prevCount + 1);
   };
+
   const handleDecrement = () => {
     if (count > 1) {
       setCount(prevCount => prevCount - 1);
@@ -47,6 +52,12 @@ export const ProductPage = () => {
     dispatch(fetchCategory({ gender, category, count: 4, top: true, exclude: id }))
   }, [gender, category, id, dispatch]);
 
+  useEffect(() => {
+    if (colorList?.length && colors?.length) {
+      setSelectedColor(colorList.find(color => color.id === colors[0]).title);
+    }
+  }, [colorList, colors]);
+
   return (
     <>
       <section className={style.card}>
@@ -57,7 +68,18 @@ export const ProductPage = () => {
             alt={`${product.title} ${product.description}`}
           />
 
-          <form className={style.content}>
+          <form
+            className={style.content}
+            onSubmit={e => {
+              e.preventDefault();
+              dispatch(addToCart({
+                id,
+                color: selectedColor,
+                size: selectedSize,
+                count,
+              }));
+            }}
+          >
             <h2 className={style.title}>{product.title}</h2>
 
             <p className={style.price}>руб {product.price}</p>
@@ -70,7 +92,7 @@ export const ProductPage = () => {
             <div className={style.color}>
               <p className={cN(style.subtitle, style.colorTitle)}>Цвет</p>
               <ColorList
-                colors={product.colors}
+                colors={colors}
                 selectedColor={selectedColor}
                 handleColorChange={handleColorChange}
               />
