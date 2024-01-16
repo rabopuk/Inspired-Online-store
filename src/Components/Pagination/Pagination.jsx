@@ -41,7 +41,7 @@ export const Pagination = () => {
       paginationItems.push(
         <li className={style.item} key={i}>
           <NavLink
-            className={cN(style.link, i === pagePagination ?? style.linkActive)}
+            className={cN(style.link, i === pagePagination ? style.linkActive : '')}
             to={`${pathname}?page=${i}`}
             onClick={() => handlePageChange(i)}
           >
