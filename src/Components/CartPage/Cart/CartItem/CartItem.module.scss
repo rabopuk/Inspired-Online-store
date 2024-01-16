@@ -74,7 +74,7 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  color: #8A8A8A;
+  color: #8a8a8a;
 
   @media (max-width: 540px) {
     font-size: 10px;
@@ -147,14 +147,13 @@
   align-items: center;
   justify-content: center;
   border: 0.5px solid #000;
-
 }
 
 .del {
   grid-area: del;
   width: 24px;
   height: 24px;
-  background: url("./close.svg") center no-repeat;
+  background: url("./del.svg") center no-repeat;
   justify-self: end;
   align-self: start;
 }

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import cN from 'classnames';
-import { addToCart } from '../../../../features/cartSlice.js';
+import { addToCart, removeFromCart } from '../../../../features/cartSlice.js';
 import style from './CartItem.module.scss';
 import { API_URL } from '../../../../const.js';
 import { Count } from '../../../Count/Count.jsx';
@@ -12,6 +12,10 @@ export const CartItem = ({ id, color, size, count, goodsList }) => {
 
   const handleCountChange = (count) => {
     dispatch(addToCart({ id, color, size, count }));
+  };
+
+  const handleRemoveItem = () => {
+    dispatch(removeFromCart({ id, color, size }));
   };
 
   return (
@@ -54,6 +58,7 @@ export const CartItem = ({ id, color, size, count, goodsList }) => {
         className={style.del}
         aria-label='Удалить товар из корзины'
         type='button'
+        onClick={handleRemoveItem}
       >
       </button>
 
