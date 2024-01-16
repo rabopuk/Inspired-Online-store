@@ -1,16 +1,22 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import cN from "classnames";
 import { Container } from "../../Layout/Container/Container.jsx";
-import style from './Top.module.scss';
+import { toggleSearch } from "../../../features/searchSlice.js";
 import logo from '/src/assets/logo.svg';
 import SearchSVG from '../../../assets/search.svg?react';
 import CartSVG from '../../../assets/cart.svg?react';
 import LikeSVG from '../../../assets/heart.svg?react';
+import style from './Top.module.scss';
 
 
 export const Top = () => {
   const { countItems } = useSelector(state => state.cart);
+  const dispatch = useDispatch();
+
+  const handleOpenSearch = () => {
+    dispatch(toggleSearch());
+  };
 
   return (
     <div className={style.top}>
@@ -24,7 +30,7 @@ export const Top = () => {
         <div className={style.topNavigation}>
           <ul className={style.topNavList}>
             <li className={style.navItem}>
-              <button className={style.topLink}>
+              <button className={style.topLink} onClick={handleOpenSearch}>
                 <SearchSVG />
               </button>
             </li>
