@@ -1,7 +1,8 @@
 # Макет
+[FIGMA](https://www.figma.com/file/PKUudRaGVDkLrhiYVmzCAP/INSPIRED-(Marathon)-(Copy)?mode=dev)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Деплой
+[VERCEL](https://inspired-online-store-git-main-rabopuk.vercel.app/)
 
-Currently, two official plugins are available:
-
-- [FIGMA](https://www.figma.com/file/PKUudRaGVDkLrhiYVmzCAP/INSPIRED-(Marathon)-(Copy)?mode=dev)
+# Сервер
+[GLITCH](https://absorbing-holy-periwinkle.glitch.me/)
