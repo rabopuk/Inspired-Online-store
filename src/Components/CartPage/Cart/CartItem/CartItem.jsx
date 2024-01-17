@@ -1,9 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
 import cN from 'classnames';
-import { addToCart, removeFromCart } from '../../../../features/cartSlice.js';
-import style from './CartItem.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
 import { API_URL } from '../../../../const.js';
+import { addToCart, removeFromCart } from '../../../../features/cartSlice.js';
 import { Count } from '../../../Count/Count.jsx';
+import style from './CartItem.module.scss';
 
 export const CartItem = ({ id, color, size, count, goodsList }) => {
   const dispatch = useDispatch();

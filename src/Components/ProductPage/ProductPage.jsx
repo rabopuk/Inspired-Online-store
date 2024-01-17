@@ -10,9 +10,9 @@ import { BtnLike } from '../BtnLike/BtnLike.jsx';
 import { ColorList } from '../ColorList/ColorList.jsx';
 import { Count } from '../Count/Count.jsx';
 import { Goods } from '../Goods/Goods.jsx';
-import { ProductSize } from './ProductSize/ProductSize.jsx';
 import { Container } from '../Layout/Container/Container.jsx';
 import style from './ProductPage.module.scss';
+import { ProductSize } from './ProductSize/ProductSize.jsx';
 
 export const ProductPage = () => {
   const dispatch = useDispatch();

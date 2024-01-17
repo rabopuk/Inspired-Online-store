@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import cN from 'classnames';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import style from './Category.module.scss';
 
 export const Category = () => {

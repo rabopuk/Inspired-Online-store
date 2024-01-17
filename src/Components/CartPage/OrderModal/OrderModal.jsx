@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import style from './OrderModal.module.scss';
 import { API_URL } from '../../../const.js';
 import { clearCart } from '../../../features/cartSlice.js';
+import style from './OrderModal.module.scss';
 
 export const OrderModal = () => {
   const dispatch = useDispatch();

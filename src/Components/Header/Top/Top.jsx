@@ -1,13 +1,13 @@
+import cN from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import cN from "classnames";
-import { Container } from "../../Layout/Container/Container.jsx";
-import { toggleSearch } from "../../../features/searchSlice.js";
-import logo from '/src/assets/logo.svg';
-import SearchSVG from '../../../assets/search.svg?react';
 import CartSVG from '../../../assets/cart.svg?react';
 import LikeSVG from '../../../assets/heart.svg?react';
+import SearchSVG from '../../../assets/search.svg?react';
+import { toggleSearch } from "../../../features/searchSlice.js";
+import { Container } from "../../Layout/Container/Container.jsx";
 import style from './Top.module.scss';
+import logo from '/src/assets/logo.svg';
 
 
 export const Top = () => {

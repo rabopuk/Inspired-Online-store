@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import cN from 'classnames';
+import { useEffect, useRef } from 'react';
 import style from './Color.module.scss';
 
 export const Color = ({ color, check }) => {

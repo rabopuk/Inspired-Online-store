@@ -1,6 +1,6 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
 import { fetchAll } from "../../features/goodsSlice.js";
 import { Goods } from "../Goods/Goods.jsx";
 import style from './SearchPage.module.scss';

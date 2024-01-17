@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { PatternFormat } from 'react-number-format';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { sendOrder } from '../../../features/cartSlice.js';
 import { Container } from '../../Layout/Container/Container.jsx';

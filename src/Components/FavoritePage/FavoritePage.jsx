@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { Goods } from "../Goods/Goods.jsx";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchCategory } from "../../features/goodsSlice.js";
 import { usePageFromSearchParams } from "../../hooks/usePageFromSearchParams.js";
+import { Goods } from "../Goods/Goods.jsx";
 import style from './FavoritePage.module.scss';
 
 export const FavoritePage = () => {

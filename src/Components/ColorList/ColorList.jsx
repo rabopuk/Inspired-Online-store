@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import style from './ColorList.module.scss';
 import { Color } from './Color/Color.jsx';
 import { ColorLabel } from './ColorLabel/ColorLabel.jsx';
+import style from './ColorList.module.scss';
 
 export const ColorList = ({ colors, selectedColor, handleColorChange }) => {
   const { colorList } = useSelector(state => state.color);

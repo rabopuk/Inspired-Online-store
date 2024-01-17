@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
 import cN from 'classnames';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink, useLocation } from 'react-router-dom';
 import style from './Pagination.module.scss';
 
 export const Pagination = () => {

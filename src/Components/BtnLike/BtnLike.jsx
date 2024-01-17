@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { addToFavorite, removeFromFavorite } from '../../features/favoritesSlice.js';
 import cN from 'classnames';
-import style from './BtnLike.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
 import LikeSVG from '../../assets/heart.svg?react';
+import { addToFavorite, removeFromFavorite } from '../../features/favoritesSlice.js';
+import style from './BtnLike.module.scss';
 
 export const BtnLike = ({ id }) => {
   const dispatch = useDispatch();

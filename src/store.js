@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { rootReducer } from "./rootReducer.js";
 import { setStatusServer } from "./features/statusServerSlice.js";
+import { rootReducer } from "./rootReducer.js";
 
 const errorMiddleware = store => next => action => {
   if (action.type.endsWith('/rejected')) {

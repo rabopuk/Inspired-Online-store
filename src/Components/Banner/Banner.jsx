@@ -1,9 +1,9 @@
-import { useMedia } from 'react-use';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useMedia } from 'react-use';
+import { API_URL } from '../../const.js';
 import { Container } from '../Layout/Container/Container.jsx';
 import style from './Banner.module.scss';
-import { API_URL } from '../../const.js';
 
 export const Banner = ({ data }) => {
   const isMobile = useMedia('(max-width: 540px)');

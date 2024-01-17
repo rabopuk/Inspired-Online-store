@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
-import style from './Main.module.scss';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import style from './Main.module.scss';
 
 export const Main = ({ children }) => {
   const { status } = useSelector(state => state.statusServer);

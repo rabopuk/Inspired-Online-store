@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import cN from 'classnames';
 import style from './ColorLabel.module.scss';
 
 export const ColorLabel = ({ color, check, selectedColor, handleColorChange }) => {

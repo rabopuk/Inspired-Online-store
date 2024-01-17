@@ -1,15 +1,15 @@
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { Root } from './routes/Root.jsx';
-import { MainPage } from './Components/MainPage/MainPage.jsx';
+import { useDispatch } from 'react-redux';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { CartPage } from './Components/CartPage/CartPage.jsx';
 import { ErrorPage } from './Components/ErrorPage/ErrorPage.jsx';
-import { fetchNavigation } from './features/navigationSlice.js';
-import { fetchColors } from './features/colorSlice.js';
+import { FavoritePage } from './Components/FavoritePage/FavoritePage.jsx';
+import { MainPage } from './Components/MainPage/MainPage.jsx';
 import { ProductPage } from './Components/ProductPage/ProductPage.jsx';
 import { SearchPage } from './Components/SearchPage/SearchPage.jsx';
-import { CartPage } from './Components/CartPage/CartPage.jsx';
-import { FavoritePage } from './Components/FavoritePage/FavoritePage.jsx';
+import { fetchColors } from './features/colorSlice.js';
+import { fetchNavigation } from './features/navigationSlice.js';
+import { Root } from './routes/Root.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

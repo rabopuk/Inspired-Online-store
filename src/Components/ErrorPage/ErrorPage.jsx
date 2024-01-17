@@ -1,6 +1,6 @@
-import { useLocation, useNavigate, useRouteError } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate, useRouteError } from "react-router-dom";
 import { fetchColors } from "../../features/colorSlice.js";
 import { fetchNavigation } from "../../features/navigationSlice.js";
 import style from './ErrorPage.module.scss';
