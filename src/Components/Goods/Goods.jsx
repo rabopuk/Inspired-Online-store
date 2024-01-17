@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
-import style from './Goods.module.scss';
 import { Container } from '../Layout/Container/Container.jsx';
-import { Product } from '../Product/Product.jsx';
 import { Pagination } from '../Pagination/Pagination.jsx';
+import { Preloader } from '../Preloader/Preloader.jsx';
+import { Product } from '../Product/Product.jsx';
+import style from './Goods.module.scss';
 
 export const Goods = ({ title }) => {
-  const { goodsList, totalCount } = useSelector(state => state.goods);
+  const { goodsList, totalCount, status } = useSelector(state => state.goods);
 
   return (
     <section className={style.goods}>
@@ -18,15 +19,21 @@ export const Goods = ({ title }) => {
           }
         </h2>
 
-        <ul className={style.list}>
-          {goodsList.map(item => (
-            <li key={item.id}>
-              <Product {...item} />
-            </li>
-          ))}
-        </ul>
+        {status === 'loading'
+          ? (<Preloader />)
+          : (
+            <>
+              <ul className={style.list}>
+                {goodsList.map(item => (
+                  <li key={item.id}>
+                    <Product {...item} />
+                  </li>
+                ))}
+              </ul>
 
-        <Pagination />
+              <Pagination />
+            </>
+          )}
       </Container>
     </section>
   );
