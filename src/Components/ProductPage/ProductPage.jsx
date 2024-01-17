@@ -1,18 +1,18 @@
+import cN from 'classnames';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import cN from 'classnames';
-import { fetchProduct } from '../../features/productSlice.js';
-import { Container } from '../Layout/Container/Container.jsx';
-import style from './ProductPage.module.scss';
 import { API_URL } from '../../const.js';
 import { addToCart } from '../../features/cartSlice.js';
+import { fetchCategory } from '../../features/goodsSlice.js';
+import { fetchProduct } from '../../features/productSlice.js';
+import { BtnLike } from '../BtnLike/BtnLike.jsx';
 import { ColorList } from '../ColorList/ColorList.jsx';
-import { ProductSize } from './ProductSize/ProductSize.jsx';
 import { Count } from '../Count/Count.jsx';
 import { Goods } from '../Goods/Goods.jsx';
-import { fetchCategory } from '../../features/goodsSlice.js';
-import { BtnLike } from '../btnLike/btnLike.jsx';
+import { ProductSize } from './ProductSize/ProductSize.jsx';
+import { Container } from '../Layout/Container/Container.jsx';
+import style from './ProductPage.module.scss';
 
 export const ProductPage = () => {
   const dispatch = useDispatch();
