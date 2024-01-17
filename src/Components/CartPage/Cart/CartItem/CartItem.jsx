@@ -50,7 +50,7 @@ export const CartItem = ({ id, color, size, count, goodsList }) => {
         <div className={style.size}>
           <p className={cN(style.subtitle, style.sizeTitle)}>Размер</p>
 
-          <div className={style.sizeItem}>{size}</div>
+          <span className={style.sizeItem}>{size}</span>
         </div>
       </div>
 
