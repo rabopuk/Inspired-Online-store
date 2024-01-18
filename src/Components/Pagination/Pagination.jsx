@@ -8,7 +8,6 @@ export const Pagination = () => {
   const [pagePagination, setPagePagination] = useState('');
   const pathname = useLocation().pathname;
   const { page, pages } = useSelector(state => state.goods);
-  console.log('page: ', page);
 
   useEffect(() => {
     setPagePagination(page);

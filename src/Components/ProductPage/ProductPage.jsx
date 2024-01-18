@@ -1,4 +1,5 @@
 import cN from 'classnames';
+import { ErrorMessage, Form, Formik } from 'formik';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -20,28 +21,30 @@ export const ProductPage = () => {
   const { product } = useSelector(state => state.product);
   const { gender, category, colors } = product;
   const { colorList } = useSelector(state => state.color);
-
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
-
-  const handleColorChange = e => {
-    setSelectedColor(e.target.value);
-  };
-
-  const handleSizeChange = e => {
-    setSelectedSize(e.target.value);
-  };
-
   const [count, setCount] = useState(1);
 
-  const handleIncrement = () => {
-    setCount(prevCount => prevCount + 1);
+  const handleColorChange = (e, formik) => {
+    setSelectedColor(e.target.value);
+    formik.setFieldValue('color', e.target.value);
   };
 
-  const handleDecrement = () => {
+  const handleSizeChange = (e, formik) => {
+    setSelectedSize(e.target.value);
+    formik.setFieldValue('size', e.target.value);
+  };
+
+  const handleDecrement = (formik) => {
     if (count > 1) {
-      setCount(prevCount => prevCount - 1);
+      setCount(count - 1);
+      formik.setFieldValue('count', count - 1);
     }
+  };
+
+  const handleIncrement = (formik) => {
+    setCount(count + 1);
+    formik.setFieldValue('count', count + 1);
   };
 
   useEffect(() => {
@@ -58,6 +61,33 @@ export const ProductPage = () => {
     }
   }, [colorList, colors]);
 
+  const initialValues = {
+    color: selectedColor,
+    size: selectedSize,
+    count: 1,
+  };
+
+  const validate = values => {
+    const errors = {};
+
+    if (!values.size) {
+      errors.size = 'Пожалуйста, выберите размер товара.';
+    }
+
+    return errors;
+  };
+
+  const handleSubmit = (values, { setSubmitting }) => {
+    dispatch(addToCart({
+      id,
+      color: values.color,
+      size: values.size,
+      count: values.count,
+    }));
+
+    setSubmitting(false);
+  };
+
   return (
     <>
       <section className={style.card}>
@@ -68,60 +98,60 @@ export const ProductPage = () => {
             alt={`${product.title} ${product.description}`}
           />
 
-          <form
-            className={style.content}
-            onSubmit={e => {
-              e.preventDefault();
-              dispatch(addToCart({
-                id,
-                color: selectedColor,
-                size: selectedSize,
-                count,
-              }));
-            }}
+          <Formik
+            initialValues={initialValues}
+            validate={validate}
+            onSubmit={handleSubmit}
           >
-            <h2 className={style.title}>{product.title}</h2>
+            {formik => (
+              <Form className={style.content}>
+                <h2 className={style.title}>{product.title}</h2>
+                <p className={style.price}>руб {product.price}</p>
 
-            <p className={style.price}>руб {product.price}</p>
+                <div className={style.vendorCode}>
+                  <span className={style.subtitle}>Артикул</span>
+                  <span className={style.id}>{product.id}</span>
+                </div>
 
-            <div className={style.vendorCode}>
-              <span className={style.subtitle}>Артикул</span>
-              <span className={style.id}>{product.id}</span>
-            </div>
+                <div className={style.color}>
+                  <p className={cN(style.subtitle, style.colorTitle)}>Цвет</p>
+                  <ColorList
+                    colors={colors}
+                    selectedColor={selectedColor}
+                    handleColorChange={e => handleColorChange(e, formik)}
+                  />
+                </div>
 
-            <div className={style.color}>
-              <p className={cN(style.subtitle, style.colorTitle)}>Цвет</p>
-              <ColorList
-                colors={colors}
-                selectedColor={selectedColor}
-                handleColorChange={handleColorChange}
-              />
-            </div>
+                <ProductSize
+                  size={product.size}
+                  selectedSize={selectedSize}
+                  handleSizeChange={e => handleSizeChange(e, formik)}
+                />
 
-            <ProductSize
-              size={product.size}
-              selectedSize={selectedSize}
-              handleSizeChange={handleSizeChange}
-            />
+                <ErrorMessage name="size" component="div" className={style.error} />
 
-            <div className={style.description}>
-              <p className={cN(style.subtitle, style.descriptionTitle)}>Описание</p>
-              <p className={style.descriptionText}>{product.description}</p>
-            </div>
+                <div className={style.description}>
+                  <p className={cN(style.subtitle, style.descriptionTitle)}>Описание</p>
+                  <p className={style.descriptionText}>{product.description}</p>
+                </div>
 
-            <div className={style.control}>
-              <Count
-                className={style.count}
-                count={count}
-                handleIncrement={handleIncrement}
-                handleDecrement={handleDecrement}
-              />
+                <div className={style.control}>
+                  <Count
+                    className={style.count}
+                    count={count}
+                    handleIncrement={() => handleIncrement(formik)}
+                    handleDecrement={() => handleDecrement(formik)}
+                  />
 
-              <button className={style.addCart} type='submit'>В корзину</button>
+                  <button className={style.addCart} type="submit">
+                    В корзину
+                  </button>
 
-              <BtnLike id={id} />
-            </div>
-          </form>
+                  <BtnLike id={id} />
+                </div>
+              </Form>
+            )}
+          </Formik>
         </Container>
       </section>
 

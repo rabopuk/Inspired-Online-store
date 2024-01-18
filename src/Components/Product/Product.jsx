@@ -4,22 +4,32 @@ import { BtnLike } from '../BtnLike/BtnLike.jsx';
 import { ColorList } from '../ColorList/ColorList.jsx';
 import style from './Product.module.scss';
 
-export const Product = ({ id, pic, title, price, colors, description }) => (
-  <article className={style.product}>
-    <NavLink className={style.link} to={`/product/${id}`}>
-      <img
-        className={style.image}
-        src={`${API_URL}${pic}`}
-        alt={`${title} ${description}`}
-      />
-      <h3 className={style.title}>{title}</h3>
-    </NavLink>
+export const Product = ({ id, pic, title, price, colors, description }) => {
+  const handleProductClick = () => {
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-    <div className={style.row}>
-      <p className={style.price}>руб {price}</p>
-      <BtnLike id={id} />
-    </div>
+  return (
+    <article className={style.product}>
+      <NavLink
+        className={style.link}
+        to={`/product/${id}`}
+        onClick={handleProductClick}
+      >
+        <img
+          className={style.image}
+          src={`${API_URL}${pic}`}
+          alt={`${title} ${description}`}
+        />
+        <h3 className={style.title}>{title}</h3>
+      </NavLink>
 
-    <ColorList colors={colors} />
-  </article>
-);
+      <div className={style.row}>
+        <p className={style.price}>руб {price}</p>
+        <BtnLike id={id} />
+      </div>
+
+      <ColorList colors={colors} />
+    </article>
+  );
+};

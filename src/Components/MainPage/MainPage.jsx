@@ -38,7 +38,7 @@ export const MainPage = () => {
       dispatch(fetchGender(gender));
       return;
     }
-  }, [category, gender, history, page, dispatch]);
+  }, [category, gender, page, dispatch]);
 
   return (
     <>
