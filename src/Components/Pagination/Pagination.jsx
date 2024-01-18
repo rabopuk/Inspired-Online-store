@@ -60,9 +60,13 @@ export const Pagination = () => {
       <button
         className={style.arrow}
         onClick={handlePrevPage}
-        disabled={pagePagination <= 2}
+        disabled={pagePagination <= 1}
       >
-        &lt;
+        <NavLink
+          to={`${pathname}?page=${page - 1}`}
+        >
+          &lt;
+        </NavLink>
       </button>
 
       <ul className={style.list}>{renderPaginationItems()}</ul>
@@ -70,9 +74,13 @@ export const Pagination = () => {
       <button
         className={style.arrow}
         onClick={handleNextPage}
-        disabled={pagePagination >= pages - 1 || pages <= 3}
+        disabled={pagePagination >= pages}
       >
-        &gt;
+        <NavLink
+          to={`${pathname}?page=${page + 1}`}
+        >
+          &gt;
+        </NavLink>
       </button>
     </div>
   );

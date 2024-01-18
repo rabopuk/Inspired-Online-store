@@ -8,8 +8,8 @@ import { Banner } from "../Banner/Banner.jsx";
 import { Goods } from "../Goods/Goods.jsx";
 
 export const MainPage = () => {
-  const { gender, category } = useParams();
   const dispatch = useDispatch();
+  const { gender, category } = useParams();
   const { activeGender, categories, genderList } = useSelector(state => state.navigation);
   const genderData = categories[activeGender];
   const categoryData = genderData?.list.find(item => item.slug === category);
@@ -29,6 +29,8 @@ export const MainPage = () => {
       const params = { gender, category };
       if (page) {
         params.page = page;
+      } else {
+        params.page = 1;
       }
       dispatch(fetchCategory(params));
       return;
@@ -43,8 +45,7 @@ export const MainPage = () => {
   return (
     <>
       {!category && <Banner data={genderData?.banner} />}
-      <Goods
-        title={categoryData?.title}
+      <Goods title={categoryData?.title}
       />
     </>
   );
