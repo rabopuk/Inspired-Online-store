@@ -83,6 +83,7 @@ const goodsSlice = createSlice({
         state.goodsList = action.payload.goods;
         state.pages = action.payload.pages;
         state.totalCount = action.payload.totalCount;
+        state.page = action.payload.page || 1;
       })
       .addCase(fetchCategory.rejected, (state, action) => {
         state.status = 'fail';

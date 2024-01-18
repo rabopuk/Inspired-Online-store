@@ -13,7 +13,7 @@ export const MainPage = () => {
   const { activeGender, categories, genderList } = useSelector(state => state.navigation);
   const genderData = categories[activeGender];
   const categoryData = genderData?.list.find(item => item.slug === category);
-  const page = usePageFromSearchParams(dispatch);
+  const page = Math.max(1, usePageFromSearchParams(dispatch));
 
   useEffect(() => {
     if (gender) {
@@ -29,8 +29,6 @@ export const MainPage = () => {
       const params = { gender, category };
       if (page) {
         params.page = page;
-      } else {
-        params.page = 1;
       }
       dispatch(fetchCategory(params));
       return;
@@ -40,7 +38,7 @@ export const MainPage = () => {
       dispatch(fetchGender(gender));
       return;
     }
-  }, [category, gender, page, dispatch]);
+  }, [category, gender, history, page, dispatch]);
 
   return (
     <>
